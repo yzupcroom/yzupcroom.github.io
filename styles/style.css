@@ -1,0 +1,21 @@
+table { border-collapse: collapse; border-spacing: 0; }
+th{
+    background-color: #93b7d5;
+    font:lighter;
+    width: 150px;
+    height: 20px;
+    text-align:center;
+    vertical-align:middle;
+}
+tr{
+    height: 30px;
+    vertical-align:middle;
+    width: 150px;
+    text-align:center;
+}
+tr:nth-child(odd){
+    background-color: beige;
+}
+div#hours{
+ margin-top: 20px;   
+}

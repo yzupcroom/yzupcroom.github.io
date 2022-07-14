@@ -1,3 +1,125 @@
+function onDuty()
+{
+    var userId=$('#user').val();
+    //alert(userId);
+	$.ajax({
+		url: "php/onDuty.php",
+		data: {
+            userId:userId
+		},
+		type: "POST",
+		datatype: "html",
+		success: function( out ) {
+			alert("打卡成功");
+			showInformation();
+		},
+		error : function(){
+			alert( "Request failed." );
+		}
+	});
+    
+    
+}
+
+function offDuty()
+{
+    var userId=$('#user').val();
+	$.ajax({
+		url: "php/offDuty.php",
+		data: {
+            userId:userId
+		},
+		type: "POST",
+		datatype: "html",
+		success: function( out ) {
+			alert("下班成功");
+			showInformation();
+		},
+		error : function(){
+			alert( "Request failed." );
+		}
+	});
+}
+
+function showInformation()
+{
+    var userId=$('#user').val();
+	$.ajax({
+		url: "php/show.php",
+		data: {
+            userId:userId
+
+		},
+		type: "POST",
+		datatype: "html",
+		success: function( out ) {
+			document.getElementById("hours").innerHTML=out;
+		},
+		error : function(){
+			alert( "Request failed." );
+		}
+	});
+}
+
+function showMenu()
+{
+	$.ajax({
+		url: "php/showYMSel.php",
+		data: {
+		},
+		type: "POST",
+		datatype: "html",
+		success: function( out ) {
+			document.getElementById("ym").innerHTML=out;
+		},
+		error : function(){
+			alert( "Request failed." );
+		}
+	});
+
+}
+
+
+function hist()
+{
+    var year=$('#year').val();
+    var month=$('#month').val();
+	$('show1').empty();
+	console.log(year)
+	$.ajax({
+		url: "php/showhist.php",
+		data: {
+            year:year,
+			month: month
+		},
+		type: "POST",
+		datatype: "html",
+		success: function( out ) {
+			document.getElementById("show1").innerHTML=out;
+		},
+		error : function(){
+			alert( "Request failed." );
+		}
+	});
+}
+
+function r()
+{
+	$.ajax({
+		url: "php/r.php",
+		data: {
+		},
+		type: "POST",
+		datatype: "html",
+		success: function( out ) {
+			console.log("200")
+		},
+		error : function(){
+			alert( "Request failed." );
+		}
+	});
+}
+
 function calSalary(){
     var unitSalary =168;
     var today = new Date()
