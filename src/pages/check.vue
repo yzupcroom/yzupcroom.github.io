@@ -27,6 +27,7 @@
 
 
 <script>
+import { api } from 'boot/axios'
 export default {
   data: () => ({
     name: "check",
@@ -36,10 +37,18 @@ export default {
     },
     users: []
   }),
+  async created () {
+        this.loadData()
+        console.log(this.users)
+    },
+
   methods: {
    loadData () {
-
-          this.users = data.value;
+    console.log("loadData");
+    api.get('/api/user.php').then(res => {
+      this.users = res.data
+      console.log(this.users)
+    })
     },
     changeSignal(){
       this.check = !this.check;
